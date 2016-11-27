@@ -16,6 +16,7 @@ class Draft(object):
     
     def start(self):
         # Returns a representation of the starting state of the game.
+    # I declare bankruptcy
         pass
 
     def current_drafter(self, state):
