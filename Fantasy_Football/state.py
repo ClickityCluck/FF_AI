@@ -1,33 +1,32 @@
-class Draft(object):
+class State(object):
     ''' Class object for the entire draft '''
 
-    def __init__(self,player_dict,current_drafter):   
+    def __init__(self,playerList,pickOrder):   
         '''initialize a Draft instance'''
-        self.Available_players = player_dict
-        self.League_size = len(pick_order)
-        self.Lineups = dict([[pick_order[j],[]] for j in range(self.League_size)])
-        self.Pick_order = pick_order
-        self.Current_drafter = current_drafter
+        self.AvailablePlayer = playerList
+        self.LeagueSize = len(pickOrder)
+        self.Lineups = dict([[pickOrder[j],[]] for j in range(self.LeagueSize)])
+        self.PickOrder = pickOrder
+        self.CurrentDrafter = pickOrder[0]
     
     def start(self):
         # Returns a representation of the starting state of the game.
         pass
 
-    def current_drafter(self, state):
-        return self.pick_order()
+    def currentDrafter(self, state):
+        return self.PickOrder()
         # Takes the game state and returns the current player's
         # number.
         pass
 
-    def next_state(self,chosen_player):
-        self.Lineups[self.Current_drafter] = self.Lineups[self.Current_drafter] + self.Available_players.pop(chosen_player)
-        if self.Current_drafter == self.Pick_order[self.League_size -1]:
-            self.Pick_order = self.Pick_order[::-1]
-            
+    def next_state(self,chosenPlayer):
+        self.Lineups[self.CurrentDrafter] = self.Lineups[self.CurrentDrafter].append(self.AvailablePlayer.pop(chosenPlayer))
+        if self.CurrentDrafter == self.PickOrder[self.LeagueSize -1]:
+            self.PickOrder = self.PickOrder[::-1]         
         else:
-            self.Current_drafter = self.Pick_order[self.Pick_order.index(self.Current_drafter) + 1]
+            self.CurrentDrafter = self.PickOrder[self.PickOrder.index(self.CurrentDrafter) + 1]
             
-        #chosen_player_ID = Int(input('Who dun got picked?'))
+        #chosenPlayer_ID = Int(input('Who dun got picked?'))
 
 
     def legal_plays(self, state_history):
