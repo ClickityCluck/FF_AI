@@ -1,3 +1,8 @@
+"""
+@author: Zach & Shane 
+"""
+
+import datetime
 from random import choice
 
 class MonteCarlo(object):
