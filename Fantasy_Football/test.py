@@ -1,7 +1,7 @@
 """
 Created on Sun Oct 30 15:48:10 2016
 
-@author: Shane
+@author: Shane and Zach
 """
 import csv
 with open('playerList.txt', newline='') as inputfile:
